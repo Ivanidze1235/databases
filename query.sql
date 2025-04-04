@@ -12,6 +12,12 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    user_achievements(
+        user_id INT NOT NULL,
+        achievement VARCHAR(255) NOT NULL
+    );
+
+CREATE TABLE
     games_played (
         user_id INT NOT NULL,
         game_id INT NOT NULL,
@@ -24,6 +30,11 @@ CREATE TABLE
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         title VARCHAR(255) NOT NULL,
         release_date DATETIME DEFAULT NOW() NOT NULL
+    );
+CREATE TABLE 
+    game_genre (
+        game_id INT NOT NULL,
+        genre VARCHAR(255) NOT NULL
     );
 
 CREATE TABLE
@@ -47,6 +58,12 @@ CREATE TABLE
         total_seasons INT NOT NULL
     );
 
+CREATE TABLE 
+    anime_genre (
+        anime_id INT NOT NULL,
+        genre VARCHAR(255) NOT NULL
+    );
+
 CREATE TABLE
     animates (anime_id INT NOT NULL, studio_id INT NOT NULL);
 
@@ -66,6 +83,12 @@ CREATE TABLE
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         title VARCHAR(255) NOT NULL,
         date_published DATETIME DEFAULT NOW() NOT NULL
+    );
+
+CREATE TABLE 
+    manga_genre (
+        manga_id INT NOT NULL,
+        genre VARCHAR(255) NOT NULL
     );
 
 CREATE TABLE
@@ -150,3 +173,8 @@ INSERT INTO
     user (username, level)
 VALUES
     ("choi55", 41);
+
+INSERT INTO
+    user (username, level)
+VALUES
+    ("bigchungus420", 69);

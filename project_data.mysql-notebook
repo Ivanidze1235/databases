@@ -1,21 +1,47 @@
 {
     "type": "MySQLNotebook",
     "version": "1.0",
-    "caption": "query.sql",
-    "content": "DROP DATABASE project_fedoroi2db;\n\nCREATE DATABASE project_fedoroi2db;\n\nUSE project_fedoroi2db;\n\nCREATE TABLE\n    user (\n        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,\n        username VARCHAR(255),\n        level INT NOT NULL DEFAULT 0\n    );\n\nCREATE TABLE\n    games_played (\n        user_id INT NOT NULL,\n        game_id INT NOT NULL,\n        playtime INT NOT NULL DEFAULT 0,\n        date_started DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    game (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        release_date DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    develops (game_id INT NOT NULL, developer_id INT NOT NULL);\n\nCREATE TABLE\n    developer (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        name VARCHAR(255) NOT NULL,\n        date_established DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    anime_watched (user_id INT NOT NULL, anime_id INT NOT NULL);\n\nCREATE TABLE\n    anime (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        total_episodes INT NOT NULL,\n        total_seasons INT NOT NULL\n    );\n\nCREATE TABLE\n    animates (anime_id INT NOT NULL, studio_id INT NOT NULL);\n\nCREATE TABLE\n    studio (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        name VARCHAR(255),\n        date_established DATETIME DEFAULT NOW() NOT NULL,\n        country_of_origin VARCHAR(255)\n    );\n\nCREATE TABLE\n    manga_read (user_id INT NOT NULL, manga_id INT NOT NULL);\n\nCREATE TABLE\n    manga (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        date_published DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    writes (manga_id INT NOT NULL, author_id INT NOT NULL);\n\nCREATE TABLE\n    author (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        first_name VARCHAR(255) NOT NULL,\n        last_name VARCHAR(255) NOT NULL,\n        date_of_birth DATETIME DEFAULT NOW() NOT NULL,\n        date_of_death DATETIME,\n        age DATETIME /* add code later*/\n    );\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"The Witcher\", \"2022-09-06\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Roblox\", \"2006-09-01\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Fortnite\", \"2017-07-21\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Minecraft\", \"2009-05-17\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Dead by Daylight\", \"2016-06-14\");\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"fedoroi2\", 43);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bilskim3\", 25);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"kogutb2\", 77);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"novak7\", 27);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"miller42\", 35);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"taylor19\", 18);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bennett3\", 50);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"rojas88\", 23);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"choi55\", 41);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bigchungus420\", 69);",
+    "caption": "DB Notebook",
+    "content": "CREATE DATABASE project_fedoroi2db;\n\nUSE project_fedoroi2db;\n\nCREATE TABLE\n    user (\n        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,\n        username VARCHAR(255),\n        level INT NOT NULL DEFAULT 0\n    );\n\nCREATE TABLE\n    user_achievements(\n        user_id INT NOT NULL,\n        achievement VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    games_played (\n        user_id INT NOT NULL,\n        game_id INT NOT NULL,\n        playtime INT NOT NULL DEFAULT 0,\n        date_started DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    game (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        release_date DATETIME DEFAULT NOW() NOT NULL\n    );\nCREATE TABLE \n    game_genre (\n        game_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    develops (game_id INT NOT NULL, developer_id INT NOT NULL);\n\nCREATE TABLE\n    developer (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        name VARCHAR(255) NOT NULL,\n        date_established DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    anime_watched (user_id INT NOT NULL, anime_id INT NOT NULL);\n\nCREATE TABLE\n    anime (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        total_episodes INT NOT NULL,\n        total_seasons INT NOT NULL\n    );\n\nCREATE TABLE \n    anime_genre (\n        anime_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    animates (anime_id INT NOT NULL, studio_id INT NOT NULL);\n\nCREATE TABLE\n    studio (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        name VARCHAR(255),\n        date_established DATETIME DEFAULT NOW() NOT NULL,\n        country_of_origin VARCHAR(255)\n    );\n\nCREATE TABLE\n    manga_read (user_id INT NOT NULL, manga_id INT NOT NULL);\n\nCREATE TABLE\n    manga (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        date_published DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE \n    manga_genre (\n        manga_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    writes (manga_id INT NOT NULL, author_id INT NOT NULL);\n\nCREATE TABLE\n    author (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        first_name VARCHAR(255) NOT NULL,\n        last_name VARCHAR(255) NOT NULL,\n        date_of_birth DATETIME DEFAULT NOW() NOT NULL,\n        date_of_death DATETIME,\n        age DATETIME /* add code later*/\n    );\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"The Witcher\", \"2022-09-06\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Roblox\", \"2006-09-01\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Fortnite\", \"2017-07-21\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Minecraft\", \"2009-05-17\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Dead by Daylight\", \"2016-06-14\");\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"fedoroi2\", 43);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bilskim3\", 25);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"kogutb2\", 77);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"novak7\", 27);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"miller42\", 35);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"taylor19\", 18);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bennett3\", 50);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"rojas88\", 23);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"choi55\", 41);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bigchungus420\", 69);\n",
     "options": {
         "tabSize": 4,
-        "indentSize": 4,
         "insertSpaces": true,
-        "defaultEOL": "LF",
+        "indentSize": 4,
+        "defaultEOL": "CRLF",
         "trimAutoWhitespace": true
     },
-    "viewState": null,
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 177,
+                    "column": 7
+                },
+                "position": {
+                    "lineNumber": 177,
+                    "column": 7
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 159,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -3
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
     "contexts": [
         {
             "state": {
                 "start": 1,
-                "end": 157,
+                "end": 178,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -23,477 +49,536 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "075d17dd-b087-4608-ca67-e84ade53060e",
-                            "content": "OK, 13 rows affected in 50.382ms"
+                            "resultId": "a6a61c72-7bf2-4aa3-a190-ef19ad75c5a8",
+                            "content": "OK, 1 row affected in 3.966ms"
                         },
                         {
                             "type": 2,
                             "index": 1,
-                            "resultId": "fe2eb511-fdae-45cb-9953-0fd30aa73cf9",
-                            "content": "OK, 1 row affected in 4.78ms"
+                            "resultId": "5c2ca898-a94d-4a73-dd82-b5bd250e78f5",
+                            "content": "OK, 0 records retrieved in 0.898ms"
                         },
                         {
                             "type": 2,
                             "index": 2,
-                            "resultId": "f792877a-96ed-4565-8ed1-1c3130a26bc5",
-                            "content": "OK, 0 records retrieved in 0.809ms"
+                            "resultId": "618e7129-7af8-4e4e-d84e-7a5fd1e2f2d9",
+                            "content": "OK, 0 records retrieved in 13.986ms"
                         },
                         {
                             "type": 2,
                             "index": 3,
-                            "resultId": "e2324589-906a-4d55-a652-af790cdf9d58",
-                            "content": "OK, 0 records retrieved in 10.928ms"
+                            "resultId": "1391fda9-9434-4f34-def1-2623b7d6dc6a",
+                            "content": "OK, 0 records retrieved in 11.224ms"
                         },
                         {
                             "type": 2,
                             "index": 4,
-                            "resultId": "ae95759a-dd27-4ca6-e7f4-4ffaf5e665c5",
-                            "content": "OK, 0 records retrieved in 11.207ms"
+                            "resultId": "40ee3f81-ecad-41cf-8df9-da0cee6663ea",
+                            "content": "OK, 0 records retrieved in 11.243ms"
                         },
                         {
                             "type": 2,
                             "index": 5,
-                            "resultId": "e87936f8-73df-48d5-c3ea-3a4cb7a01a26",
-                            "content": "OK, 0 records retrieved in 8.764ms"
+                            "resultId": "21afb43a-518b-4574-e0ea-3abed78de354",
+                            "content": "OK, 0 records retrieved in 9.259ms"
                         },
                         {
                             "type": 2,
                             "index": 6,
-                            "resultId": "cfc8b81c-a9dc-4704-c4b2-78c6be44315e",
-                            "content": "OK, 0 records retrieved in 14.361ms"
+                            "resultId": "310edc61-8378-411e-b72f-4f309a8b600b",
+                            "content": "OK, 0 records retrieved in 11.035ms"
                         },
                         {
                             "type": 2,
                             "index": 7,
-                            "resultId": "256943d6-46c6-4b03-db40-226a772e35f9",
-                            "content": "OK, 0 records retrieved in 11.406ms"
+                            "resultId": "92fc1765-a56a-4363-91b7-ec2af8b3ab9f",
+                            "content": "OK, 0 records retrieved in 9.442ms"
                         },
                         {
                             "type": 2,
                             "index": 8,
-                            "resultId": "f521a1d3-573b-40b9-eaad-07bc9164b73b",
-                            "content": "OK, 0 records retrieved in 9.314ms"
+                            "resultId": "69bdf4db-d0a9-4924-ab5f-36c1354fdd13",
+                            "content": "OK, 0 records retrieved in 14.477ms"
                         },
                         {
                             "type": 2,
                             "index": 9,
-                            "resultId": "f1a3cc22-1772-4e22-f6d3-91003108ac61",
-                            "content": "OK, 0 records retrieved in 7.806ms"
+                            "resultId": "03303c59-1e9c-4fa2-f885-b9a18ed11f26",
+                            "content": "OK, 0 records retrieved in 9.572ms"
                         },
                         {
                             "type": 2,
                             "index": 10,
-                            "resultId": "d48df819-d119-4cd4-cec8-43388d8c36e6",
-                            "content": "OK, 0 records retrieved in 8.38ms"
+                            "resultId": "bcc18f99-9419-4479-b0c3-57bc698cf2ed",
+                            "content": "OK, 0 records retrieved in 9.811ms"
                         },
                         {
                             "type": 2,
                             "index": 11,
-                            "resultId": "cd6c9f7b-bbd6-4215-f7fa-078ef037369a",
-                            "content": "OK, 0 records retrieved in 8.498ms"
+                            "resultId": "71490fe8-f53f-47c2-ee23-bb674e440aa5",
+                            "content": "OK, 0 records retrieved in 9.799ms"
                         },
                         {
                             "type": 2,
                             "index": 12,
-                            "resultId": "7a1a43e9-3080-4971-fede-5cf7e4a6dded",
-                            "content": "OK, 0 records retrieved in 8.585ms"
+                            "resultId": "6f2d533b-5c01-40ed-8041-08530897ae82",
+                            "content": "OK, 0 records retrieved in 10.082ms"
                         },
                         {
                             "type": 2,
                             "index": 13,
-                            "resultId": "f1c7a699-930c-4c9f-e085-b2fb4fe386fc",
-                            "content": "OK, 0 records retrieved in 9.563ms"
+                            "resultId": "18bbec63-6868-4163-80b6-4ab046141692",
+                            "content": "OK, 0 records retrieved in 9.671ms"
                         },
                         {
                             "type": 2,
                             "index": 14,
-                            "resultId": "14e4c3da-0dd7-4f45-9c12-f5734a4cdbf1",
-                            "content": "OK, 0 records retrieved in 7.861ms"
+                            "resultId": "cc2ce8c4-a749-4798-8032-d710773977c7",
+                            "content": "OK, 0 records retrieved in 8.756ms"
                         },
                         {
                             "type": 2,
                             "index": 15,
-                            "resultId": "b3e9537a-bbbd-4f8d-f50e-9cc19a6be590",
-                            "content": "OK, 0 records retrieved in 8.75ms"
+                            "resultId": "89eb06bd-83c9-4363-d06e-fd0d08616a06",
+                            "content": "OK, 0 records retrieved in 10.333ms"
                         },
                         {
                             "type": 2,
                             "index": 16,
-                            "resultId": "89bf67bf-29a8-4615-b392-94aaa565ff67",
-                            "content": "OK, 1 row affected in 6.134ms"
+                            "resultId": "3107e096-f31a-4860-d6e0-86a9c198379e",
+                            "content": "OK, 0 records retrieved in 9.62ms"
                         },
                         {
                             "type": 2,
                             "index": 17,
-                            "resultId": "fcdeb7b5-3e8a-4a2d-d1d9-f068f0a48cfc",
-                            "content": "OK, 1 row affected in 1.991ms"
+                            "resultId": "71c0410f-d09a-4f2f-ee82-acee96fe5ec1",
+                            "content": "OK, 0 records retrieved in 10.085ms"
                         },
                         {
                             "type": 2,
                             "index": 18,
-                            "resultId": "4e3a28a5-abe5-4edd-d717-0d8b465cc244",
-                            "content": "OK, 1 row affected in 2.003ms"
+                            "resultId": "4c921703-c7c3-4dbf-9023-64825e2da6b0",
+                            "content": "OK, 0 records retrieved in 10.088ms"
                         },
                         {
                             "type": 2,
                             "index": 19,
-                            "resultId": "d69b9c6f-775f-45cb-e12f-35094f52a734",
-                            "content": "OK, 1 row affected in 2.228ms"
+                            "resultId": "ba13f437-8465-485e-da8b-2f02696ab149",
+                            "content": "OK, 1 row affected in 2.969ms"
                         },
                         {
                             "type": 2,
                             "index": 20,
-                            "resultId": "d131eb4b-50dd-4742-a54f-aaa396e5d706",
-                            "content": "OK, 1 row affected in 1.874ms"
+                            "resultId": "fd2fe177-d497-4714-a5cf-09e251c7cfdb",
+                            "content": "OK, 1 row affected in 1.969ms"
                         },
                         {
                             "type": 2,
                             "index": 21,
-                            "resultId": "ee1dd23d-35ea-451e-f774-b3fc27ee8292",
-                            "content": "OK, 1 row affected in 2.748ms"
+                            "resultId": "f30b0693-87ef-4676-988b-1cc1291e26a8",
+                            "content": "OK, 1 row affected in 2.023ms"
                         },
                         {
                             "type": 2,
                             "index": 22,
-                            "resultId": "03c745ad-f375-4d24-84ca-a7d65c5cd941",
-                            "content": "OK, 1 row affected in 1.794ms"
+                            "resultId": "8a7767f6-ea1c-41fb-e994-ae095ae663c2",
+                            "content": "OK, 1 row affected in 1.931ms"
                         },
                         {
                             "type": 2,
                             "index": 23,
-                            "resultId": "fcb97e9b-4ce5-41dd-b691-4437f150cab8",
-                            "content": "OK, 1 row affected in 2.112ms"
+                            "resultId": "66ff8688-ec9d-4640-e0ad-fdf8ca630f1f",
+                            "content": "OK, 1 row affected in 2.317ms"
                         },
                         {
                             "type": 2,
                             "index": 24,
-                            "resultId": "39a948df-4f08-4eff-a9fc-5c1020550ced",
-                            "content": "OK, 1 row affected in 1.76ms"
+                            "resultId": "cd7460fb-4f34-49c1-df8e-7d2808827745",
+                            "content": "OK, 1 row affected in 2.355ms"
                         },
                         {
                             "type": 2,
                             "index": 25,
-                            "resultId": "aeef1b5c-2aed-4d03-b848-39fd8da3166d",
-                            "content": "OK, 1 row affected in 1.922ms"
+                            "resultId": "b88ebaea-74f4-43c0-b5b9-b965ea52d29e",
+                            "content": "OK, 1 row affected in 2.001ms"
                         },
                         {
                             "type": 2,
                             "index": 26,
-                            "resultId": "ef004def-5ec2-43c8-fe04-812d35c880d7",
-                            "content": "OK, 1 row affected in 4.196ms"
+                            "resultId": "8498c8cc-ae27-4313-c151-251aa9f5efde",
+                            "content": "OK, 1 row affected in 1.664ms"
                         },
                         {
                             "type": 2,
                             "index": 27,
-                            "resultId": "5001710c-91fd-4d64-e7cf-eb95edc7b812",
-                            "content": "OK, 1 row affected in 1.83ms"
+                            "resultId": "011c4fcc-c4e6-46ee-9143-86fa05469dd7",
+                            "content": "OK, 1 row affected in 1.848ms"
                         },
                         {
                             "type": 2,
                             "index": 28,
-                            "resultId": "e664ee4a-8976-4638-fdf9-5e3a1a7ad367",
-                            "content": "OK, 1 row affected in 2.312ms"
+                            "resultId": "4271b1b8-2bee-4f8d-f8b5-4f54d703f25b",
+                            "content": "OK, 1 row affected in 1.747ms"
                         },
                         {
                             "type": 2,
                             "index": 29,
-                            "resultId": "bd55ca05-1ac4-4b27-9ca7-33c3c9e3ecbb",
-                            "content": "OK, 1 row affected in 1.756ms"
+                            "resultId": "6827e07d-203a-4a70-f286-c5644613abd9",
+                            "content": "OK, 1 row affected in 2.255ms"
                         },
                         {
                             "type": 2,
                             "index": 30,
-                            "resultId": "eba7b986-4c40-4be3-c7a3-189c6fe9ae0d",
-                            "content": "OK, 1 row affected in 1.885ms"
+                            "resultId": "5bbe176d-6d32-426c-a2b5-ab385c9f18a8",
+                            "content": "OK, 1 row affected in 1.969ms"
                         },
                         {
-                            "type": 5,
-                            "index": -1,
-                            "content": "✓ SQL Script execution completed in 743ms. 31 statements executed successfully.",
-                            "language": "ansi"
+                            "type": 2,
+                            "index": 31,
+                            "resultId": "fc8b8a59-8b20-4c6d-88f0-d1c727e23e58",
+                            "content": "OK, 1 row affected in 1.793ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 32,
+                            "resultId": "74c4b43d-57cd-4e16-edc6-8df57ec9e213",
+                            "content": "OK, 1 row affected in 2.221ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 33,
+                            "resultId": "a476fd4a-cd94-4fee-c81e-314dbfce9303",
+                            "content": "OK, 1 row affected in 1.738ms"
                         }
                     ]
                 },
-                "currentHeight": 300,
+                "currentHeight": 352,
                 "currentSet": 1,
                 "statements": [
                     {
                         "delimiter": ";",
                         "span": {
                             "start": 0,
-                            "length": 33
+                            "length": 35
                         },
-                        "contentStart": 1,
+                        "contentStart": 0,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 33,
-                            "length": 37
-                        },
-                        "contentStart": 35,
-                        "state": 0
-                    },
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 70,
+                            "start": 35,
                             "length": 25
                         },
-                        "contentStart": 72,
+                        "contentStart": 37,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 95,
+                            "start": 60,
                             "length": 152
                         },
-                        "contentStart": 97,
+                        "contentStart": 62,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 247,
+                            "start": 212,
+                            "length": 116
+                        },
+                        "contentStart": 214,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 328,
                             "length": 194
                         },
-                        "contentStart": 249,
+                        "contentStart": 330,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 441,
+                            "start": 522,
                             "length": 174
                         },
-                        "contentStart": 443,
+                        "contentStart": 524,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 615,
+                            "start": 696,
+                            "length": 104
+                        },
+                        "contentStart": 697,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 800,
                             "length": 78
                         },
-                        "contentStart": 617,
+                        "contentStart": 802,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 693,
+                            "start": 878,
                             "length": 182
                         },
-                        "contentStart": 695,
+                        "contentStart": 880,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 875,
+                            "start": 1060,
                             "length": 79
                         },
-                        "contentStart": 877,
+                        "contentStart": 1062,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 954,
+                            "start": 1139,
                             "length": 194
                         },
-                        "contentStart": 956,
+                        "contentStart": 1141,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1148,
+                            "start": 1333,
+                            "length": 107
+                        },
+                        "contentStart": 1335,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1440,
                             "length": 76
                         },
-                        "contentStart": 1150,
+                        "contentStart": 1442,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1224,
+                            "start": 1516,
                             "length": 210
                         },
-                        "contentStart": 1226,
+                        "contentStart": 1518,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1434,
+                            "start": 1726,
                             "length": 76
                         },
-                        "contentStart": 1436,
+                        "contentStart": 1728,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1510,
+                            "start": 1802,
                             "length": 177
                         },
-                        "contentStart": 1512,
+                        "contentStart": 1804,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1687,
+                            "start": 1979,
+                            "length": 107
+                        },
+                        "contentStart": 1981,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 2086,
                             "length": 74
                         },
-                        "contentStart": 1689,
+                        "contentStart": 2088,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1761,
+                            "start": 2160,
                             "length": 297
                         },
-                        "contentStart": 1763,
+                        "contentStart": 2162,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2058,
+                            "start": 2457,
                             "length": 86
                         },
-                        "contentStart": 2060,
+                        "contentStart": 2459,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2144,
+                            "start": 2543,
                             "length": 81
                         },
-                        "contentStart": 2146,
+                        "contentStart": 2545,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2225,
+                            "start": 2624,
                             "length": 83
                         },
-                        "contentStart": 2227,
+                        "contentStart": 2626,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2308,
+                            "start": 2707,
                             "length": 84
                         },
-                        "contentStart": 2310,
+                        "contentStart": 2709,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2392,
+                            "start": 2791,
                             "length": 91
                         },
-                        "contentStart": 2394,
+                        "contentStart": 2793,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2483,
+                            "start": 2882,
                             "length": 69
                         },
-                        "contentStart": 2485,
+                        "contentStart": 2884,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2552,
+                            "start": 2951,
                             "length": 69
                         },
-                        "contentStart": 2554,
+                        "contentStart": 2953,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2621,
+                            "start": 3020,
                             "length": 68
                         },
-                        "contentStart": 2623,
+                        "contentStart": 3022,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2689,
+                            "start": 3088,
                             "length": 67
                         },
-                        "contentStart": 2691,
+                        "contentStart": 3090,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2756,
+                            "start": 3155,
                             "length": 69
                         },
-                        "contentStart": 2758,
+                        "contentStart": 3157,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2825,
+                            "start": 3224,
                             "length": 69
                         },
-                        "contentStart": 2827,
+                        "contentStart": 3226,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2894,
+                            "start": 3293,
                             "length": 69
                         },
-                        "contentStart": 2896,
+                        "contentStart": 3295,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2963,
+                            "start": 3362,
                             "length": 68
                         },
-                        "contentStart": 2965,
+                        "contentStart": 3364,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3031,
+                            "start": 3430,
                             "length": 67
                         },
-                        "contentStart": 3033,
+                        "contentStart": 3432,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3098,
+                            "start": 3497,
                             "length": 74
                         },
-                        "contentStart": 3100,
+                        "contentStart": 3499,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 179,
+                "end": 179,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
                         "state": 0
                     }
                 ]

@@ -1,4 +1,4 @@
-
+DROP DATABASE project_fedoroi2db;
 CREATE DATABASE project_fedoroi2db;
 
 USE project_fedoroi2db;

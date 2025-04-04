@@ -2,7 +2,7 @@
     "type": "MySQLNotebook",
     "version": "1.0",
     "caption": "DB Notebook",
-    "content": "\\about\nCREATE DATABASE project_fedoroi2db;\nCREATE TABLE users (\n    id INT NOT NULL PRIMARY KEY,\n    username VARCHAR(255),\n    level INT NOT NULL\n);",
+    "content": "\\about\nDROP DATABASE project_fedoroi2db;\nCREATE DATABASE project_fedoroi2db;\nUSE project_fedoroi2db;\nCREATE TABLE user(\n    id INT NOT NULL PRIMARY KEY,\n    username VARCHAR(255),\n    level INT NOT NULL DEFAULT 0\n);\nCREATE TABLE games_played(\n    user_id INT NOT NULL,\n    game_id INT NOT NULL,\n    playtime INT NOT NULL DEFAULT 0,\n    date_started DATETIME DEFAULT NOW()\n);\nCREATE TABLE game(\n    id INT PRIMARY KEY NOT NULL,\n    title VARCHAR(255) NOT NULL,\n    release_date DATETIME DEFAULT NOW()\n);\nCREATE TABLE develops(\n    game_id INT NOT NULL,\n    developer_id INT NOT NULL\n);\nCREATE TABLE developer(\n    id INT PRIMARY KEY NOT NULL,\n    name VARCHAR(255) NOT NULL,\n    date_established DATETIME DEFAULT NOW()\n);\n\n\n",
     "options": {
         "tabSize": 4,
         "indentSize": 4,
@@ -15,12 +15,12 @@
             {
                 "inSelectionMode": false,
                 "selectionStart": {
-                    "lineNumber": 7,
-                    "column": 3
+                    "lineNumber": 28,
+                    "column": 44
                 },
                 "position": {
-                    "lineNumber": 7,
-                    "column": 3
+                    "lineNumber": 28,
+                    "column": 44
                 }
             }
         ],
@@ -43,17 +43,6 @@
                 "start": 1,
                 "end": 1,
                 "language": "mysql",
-                "result": {
-                    "type": "text",
-                    "text": [
-                        {
-                            "type": 2,
-                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
-                            "language": "ansi"
-                        }
-                    ]
-                },
-                "currentHeight": 121.140625,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -72,7 +61,144 @@
         {
             "state": {
                 "start": 2,
-                "end": 7,
+                "end": 31,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "898a8f7e-eb8d-484c-9046-327666303488",
+                            "content": "OK, 1 row affected in 11.178ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 1,
+                            "resultId": "afc8ff4b-3f31-4492-886b-782d9118a9bf",
+                            "content": "OK, 1 row affected in 3.581ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 2,
+                            "resultId": "ed20875b-8726-416e-c098-617987261612",
+                            "content": "OK, 0 records retrieved in 0.827ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 3,
+                            "resultId": "912da0ad-7898-4612-e19c-8bfcf0269eeb",
+                            "content": "OK, 0 records retrieved in 9.769ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 4,
+                            "resultId": "5902dd22-cc54-4302-ae8a-fb867ee25ae9",
+                            "content": "OK, 0 records retrieved in 9.785ms"
+                        }
+                    ]
+                },
+                "currentHeight": 45.703125,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 33
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 33,
+                            "length": 36
+                        },
+                        "contentStart": 34,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 69,
+                            "length": 24
+                        },
+                        "contentStart": 70,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 93,
+                            "length": 115
+                        },
+                        "contentStart": 94,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 208,
+                            "length": 159
+                        },
+                        "contentStart": 209,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 367,
+                            "length": 1
+                        },
+                        "contentStart": 367,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 368,
+                            "length": 127
+                        },
+                        "contentStart": 368,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 495,
+                            "length": 82
+                        },
+                        "contentStart": 496,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 577,
+                            "length": 136
+                        },
+                        "contentStart": 578,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 713,
+                            "length": 3
+                        },
+                        "contentStart": 712,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 32,
+                "end": 32,
                 "language": "mysql",
                 "currentSet": 1,
                 "statements": [
@@ -80,18 +206,9 @@
                         "delimiter": ";",
                         "span": {
                             "start": 0,
-                            "length": 35
+                            "length": 0
                         },
                         "contentStart": 0,
-                        "state": 0
-                    },
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 35,
-                            "length": 107
-                        },
-                        "contentStart": 36,
                         "state": 0
                     }
                 ]

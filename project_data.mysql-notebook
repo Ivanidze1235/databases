@@ -2,7 +2,7 @@
     "type": "MySQLNotebook",
     "version": "1.0",
     "caption": "DB Notebook",
-    "content": "\\about\nDROP DATABASE project_fedoroi2db;\nCREATE DATABASE project_fedoroi2db;\nUSE project_fedoroi2db;\nCREATE TABLE user(\n    id INT NOT NULL PRIMARY KEY,\n    username VARCHAR(255),\n    level INT NOT NULL DEFAULT 0\n);\nCREATE TABLE games_played(\n    user_id INT NOT NULL,\n    game_id INT NOT NULL,\n    playtime INT NOT NULL DEFAULT 0,\n    date_started DATETIME DEFAULT NOW()\n);\nCREATE TABLE game(\n    id INT PRIMARY KEY NOT NULL,\n    title VARCHAR(255) NOT NULL,\n    release_date DATETIME DEFAULT NOW()\n);\nCREATE TABLE develops(\n    game_id INT NOT NULL,\n    developer_id INT NOT NULL\n);\nCREATE TABLE developer(\n    id INT PRIMARY KEY NOT NULL,\n    name VARCHAR(255) NOT NULL,\n    date_established DATETIME DEFAULT NOW()\n);\n\nCREATE TABLE anime_watched(\n    user_id INT NOT NULL,\n    anime_id INT NOT NULL\n);\nCREATE TABLE anime(\n    id INT PRIMARY KEY NOT NULL,\n    title VARCHAR(255) NOT NULL,\n    total_episodes INT NOT NULL,\n    total_seasons INT NOT NULL\n);\nCREATE TABLE animates(\n    anime_id INT NOT NULL,\n    studio_id INT NOT NULL\n);\nCREATE TABLE studio(\n    id INT PRIMARY KEY NOT NULL,\n    name VARCHAR(255),\n    date_established DATETIME DEFAULT NOW(),\n    country_of_origin VARCHAR(255)\n);\n",
+    "content": "\\about\nDROP DATABASE project_fedoroi2d;\nDROP DATABASE project_fedoroi2db;\nCREATE DATABASE project_fedoroi2db;\nUSE project_fedoroi2db;\nCREATE TABLE user(\n    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,\n    username VARCHAR(255),\n    level INT NOT NULL DEFAULT 0\n);\nCREATE TABLE games_played(\n    user_id INT NOT NULL,\n    game_id INT NOT NULL,\n    playtime INT NOT NULL DEFAULT 0,\n    date_started DATETIME DEFAULT NOW() NOT NULL\n);\nCREATE TABLE game(\n    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n    title VARCHAR(255) NOT NULL,\n    release_date DATETIME DEFAULT NOW() NOT NULL\n);\nCREATE TABLE develops(\n    game_id INT NOT NULL,\n    developer_id INT NOT NULL\n);\nCREATE TABLE developer(\n    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n    name VARCHAR(255) NOT NULL,\n    date_established DATETIME DEFAULT NOW() NOT NULL\n);\n\nCREATE TABLE anime_watched(\n    user_id INT NOT NULL,\n    anime_id INT NOT NULL\n);\nCREATE TABLE anime(\n    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n    title VARCHAR(255) NOT NULL,\n    total_episodes INT NOT NULL,\n    total_seasons INT NOT NULL\n);\nCREATE TABLE animates(\n    anime_id INT NOT NULL,\n    studio_id INT NOT NULL\n);\nCREATE TABLE studio(\n    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n    name VARCHAR(255),\n    date_established DATETIME DEFAULT NOW() NOT NULL,\n    country_of_origin VARCHAR(255)\n);\nCREATE TABLE manga_read(\n    user_id INT NOT NULL,\n    manga_id INT NOT NULL\n);\nCREATE TABLE manga(\n    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n    title VARCHAR(255) NOT NULL,\n    date_published DATETIME DEFAULT NOW() NOT NULL\n);\nCREATE TABLE writes(\n    manga_id INT NOT NULL,\n    author_id INT NOT NULL\n);\nCREATE TABLE author(\n    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n    first_name VARCHAR(255) NOT NULL,\n    last_name VARCHAR(255) NOT NULL,\n    date_of_birth DATETIME DEFAULT NOW() NOT NULL,\n    date_of_death DATETIME,\n    age DATETIME /* add code later*/\n);",
     "options": {
         "tabSize": 4,
         "indentSize": 4,
@@ -15,22 +15,22 @@
             {
                 "inSelectionMode": false,
                 "selectionStart": {
-                    "lineNumber": 14,
-                    "column": 40
+                    "lineNumber": 71,
+                    "column": 37
                 },
                 "position": {
-                    "lineNumber": 14,
-                    "column": 40
+                    "lineNumber": 71,
+                    "column": 37
                 }
             }
         ],
         "viewState": {
             "scrollLeft": 0,
             "firstPosition": {
-                "lineNumber": 23,
+                "lineNumber": 37,
                 "column": 1
             },
-            "firstPositionDeltaTop": -22
+            "firstPositionDeltaTop": -11
         },
         "contributionsState": {
             "editor.contrib.folding": {},
@@ -43,6 +43,17 @@
                 "start": 1,
                 "end": 1,
                 "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -61,7 +72,7 @@
         {
             "state": {
                 "start": 2,
-                "end": 50,
+                "end": 2,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -69,54 +80,32 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "635e018d-5e80-488e-a808-a0c318560e41",
-                            "content": "OK, 2 rows affected in 12.324ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 1,
-                            "resultId": "79d0916a-81e4-48c2-fbe6-5f235a4705fa",
-                            "content": "OK, 1 row affected in 3.541ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 2,
-                            "resultId": "6558d762-852a-4715-95f1-81fb98b489fa",
-                            "content": "OK, 0 records retrieved in 0.825ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 3,
-                            "resultId": "9aa004a1-0db8-4c8d-fec7-a2a3a5ee443d",
-                            "content": "OK, 0 records retrieved in 11.506ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 4,
-                            "resultId": "b0ef0072-fd73-45b8-cb58-6564a57da19f",
-                            "content": "OK, 0 records retrieved in 9.6ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 6,
-                            "resultId": "9c139345-cc27-443b-8db3-a6e87f838e2b",
-                            "content": "OK, 0 records retrieved in 13.075ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 7,
-                            "resultId": "9d4630fd-11d9-4cf3-d64f-dffe6ccbce6c",
-                            "content": "OK, 0 records retrieved in 10.651ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 8,
-                            "resultId": "978fd795-db97-47cd-92b2-49f9773f2297",
-                            "content": "OK, 0 records retrieved in 10.11ms"
+                            "resultId": "84e7a221-0fbc-45b1-8f8e-32052f3f1d16",
+                            "content": "OK, 0 records retrieved in 5.741ms"
                         }
                     ]
                 },
-                "currentHeight": 158.84375,
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 32
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 72,
+                "language": "mysql",
                 "currentSet": 1,
                 "statements": [
                     {
@@ -150,7 +139,7 @@
                         "delimiter": ";",
                         "span": {
                             "start": 93,
-                            "length": 115
+                            "length": 130
                         },
                         "contentStart": 94,
                         "state": 0
@@ -158,111 +147,118 @@
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 208,
-                            "length": 159
+                            "start": 223,
+                            "length": 168
                         },
-                        "contentStart": 209,
+                        "contentStart": 224,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 367,
-                            "length": 1
+                            "start": 391,
+                            "length": 152
                         },
-                        "contentStart": 367,
+                        "contentStart": 392,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 368,
-                            "length": 127
-                        },
-                        "contentStart": 368,
-                        "state": 0
-                    },
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 495,
+                            "start": 543,
                             "length": 82
                         },
-                        "contentStart": 496,
+                        "contentStart": 544,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 577,
-                            "length": 136
-                        },
-                        "contentStart": 578,
-                        "state": 0
-                    },
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 713,
-                            "length": 84
-                        },
-                        "contentStart": 715,
-                        "state": 0
-                    },
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 797,
-                            "length": 153
-                        },
-                        "contentStart": 798,
-                        "state": 0
-                    },
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 950,
-                            "length": 80
-                        },
-                        "contentStart": 951,
-                        "state": 0
-                    },
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 1030,
+                            "start": 625,
                             "length": 160
                         },
-                        "contentStart": 1031,
+                        "contentStart": 626,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1190,
-                            "length": 1
+                            "start": 785,
+                            "length": 84
                         },
-                        "contentStart": 1189,
-                        "state": 3
-                    }
-                ]
-            },
-            "data": []
-        },
-        {
-            "state": {
-                "start": 51,
-                "end": 51,
-                "language": "mysql",
-                "currentSet": 1,
-                "statements": [
+                        "contentStart": 787,
+                        "state": 0
+                    },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 0,
-                            "length": 0
+                            "start": 869,
+                            "length": 168
                         },
-                        "contentStart": 0,
+                        "contentStart": 870,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1037,
+                            "length": 80
+                        },
+                        "contentStart": 1038,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1117,
+                            "length": 184
+                        },
+                        "contentStart": 1118,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1301,
+                            "length": 80
+                        },
+                        "contentStart": 1302,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1381,
+                            "length": 155
+                        },
+                        "contentStart": 1382,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1536,
+                            "length": 78
+                        },
+                        "contentStart": 1537,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1614,
+                            "length": 1
+                        },
+                        "contentStart": 1614,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1615,
+                            "length": 262
+                        },
+                        "contentStart": 1615,
                         "state": 0
                     }
                 ]

@@ -2,7 +2,7 @@
     "type": "MySQLNotebook",
     "version": "1.0",
     "caption": "DB Notebook",
-    "content": "\\about\nDROP DATABASE project_fedoroi2db;\nCREATE DATABASE project_fedoroi2db;\nUSE project_fedoroi2db;\nCREATE TABLE user(\n    id INT NOT NULL PRIMARY KEY,\n    username VARCHAR(255),\n    level INT NOT NULL DEFAULT 0\n);\nCREATE TABLE games_played(\n    user_id INT NOT NULL,\n    game_id INT NOT NULL,\n    playtime INT NOT NULL DEFAULT 0,\n    date_started DATETIME DEFAULT NOW()\n);\nCREATE TABLE game(\n    id INT PRIMARY KEY NOT NULL,\n    title VARCHAR(255) NOT NULL,\n    release_date DATETIME DEFAULT NOW()\n);\nCREATE TABLE develops(\n    game_id INT NOT NULL,\n    developer_id INT NOT NULL\n);\nCREATE TABLE developer(\n    id INT PRIMARY KEY NOT NULL,\n    name VARCHAR(255) NOT NULL,\n    date_established DATETIME DEFAULT NOW()\n);\n\nCREATE TABLE anime_watched(\n    user_id INT NOT NULL,\n    anime_id INT NOT NULL\n);\nCREATE TABLE anime(\n    id INT PRIMARY KEY NOT NULL,\n    title VARCHAR(255) NOT NULL,\n    total_episodes INT NOT NULL,\n    total_seasons INT NOT NULL\n);\n",
+    "content": "\\about\nDROP DATABASE project_fedoroi2db;\nCREATE DATABASE project_fedoroi2db;\nUSE project_fedoroi2db;\nCREATE TABLE user(\n    id INT NOT NULL PRIMARY KEY,\n    username VARCHAR(255),\n    level INT NOT NULL DEFAULT 0\n);\nCREATE TABLE games_played(\n    user_id INT NOT NULL,\n    game_id INT NOT NULL,\n    playtime INT NOT NULL DEFAULT 0,\n    date_started DATETIME DEFAULT NOW()\n);\nCREATE TABLE game(\n    id INT PRIMARY KEY NOT NULL,\n    title VARCHAR(255) NOT NULL,\n    release_date DATETIME DEFAULT NOW()\n);\nCREATE TABLE develops(\n    game_id INT NOT NULL,\n    developer_id INT NOT NULL\n);\nCREATE TABLE developer(\n    id INT PRIMARY KEY NOT NULL,\n    name VARCHAR(255) NOT NULL,\n    date_established DATETIME DEFAULT NOW()\n);\n\nCREATE TABLE anime_watched(\n    user_id INT NOT NULL,\n    anime_id INT NOT NULL\n);\nCREATE TABLE anime(\n    id INT PRIMARY KEY NOT NULL,\n    title VARCHAR(255) NOT NULL,\n    total_episodes INT NOT NULL,\n    total_seasons INT NOT NULL\n);\nCREATE TABLE animates(\n    anime_id INT NOT NULL,\n    studio_id INT NOT NULL\n);\nCREATE TABLE studio(\n    id INT PRIMARY KEY NOT NULL,\n    name VARCHAR(255),\n    date_established DATETIME DEFAULT NOW(),\n    country_of_origin VARCHAR(255)\n);\n",
     "options": {
         "tabSize": 4,
         "indentSize": 4,
@@ -15,22 +15,22 @@
             {
                 "inSelectionMode": false,
                 "selectionStart": {
-                    "lineNumber": 39,
-                    "column": 31
+                    "lineNumber": 14,
+                    "column": 40
                 },
                 "position": {
-                    "lineNumber": 39,
-                    "column": 31
+                    "lineNumber": 14,
+                    "column": 40
                 }
             }
         ],
         "viewState": {
             "scrollLeft": 0,
             "firstPosition": {
-                "lineNumber": 8,
+                "lineNumber": 23,
                 "column": 1
             },
-            "firstPositionDeltaTop": -8
+            "firstPositionDeltaTop": -22
         },
         "contributionsState": {
             "editor.contrib.folding": {},
@@ -61,7 +61,7 @@
         {
             "state": {
                 "start": 2,
-                "end": 40,
+                "end": 50,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -116,7 +116,7 @@
                         }
                     ]
                 },
-                "currentHeight": 45.703125,
+                "currentHeight": 158.84375,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -222,9 +222,27 @@
                         "delimiter": ";",
                         "span": {
                             "start": 950,
+                            "length": 80
+                        },
+                        "contentStart": 951,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1030,
+                            "length": 160
+                        },
+                        "contentStart": 1031,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 1190,
                             "length": 1
                         },
-                        "contentStart": 949,
+                        "contentStart": 1189,
                         "state": 3
                     }
                 ]
@@ -233,8 +251,8 @@
         },
         {
             "state": {
-                "start": 41,
-                "end": 41,
+                "start": 51,
+                "end": 51,
                 "language": "mysql",
                 "currentSet": 1,
                 "statements": [

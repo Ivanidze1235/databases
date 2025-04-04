@@ -16,14 +16,14 @@ CREATE TABLE
         user_id INT NOT NULL,
         game_id INT NOT NULL,
         playtime INT NOT NULL DEFAULT 0,
-        date_started DATETIME DEFAULT NOW () NOT NULL
+        date_started DATETIME DEFAULT NOW() NOT NULL
     );
 
 CREATE TABLE
     game (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         title VARCHAR(255) NOT NULL,
-        release_date DATETIME DEFAULT NOW () NOT NULL
+        release_date DATETIME DEFAULT NOW() NOT NULL
     );
 
 CREATE TABLE
@@ -33,7 +33,7 @@ CREATE TABLE
     developer (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         name VARCHAR(255) NOT NULL,
-        date_established DATETIME DEFAULT NOW () NOT NULL
+        date_established DATETIME DEFAULT NOW() NOT NULL
     );
 
 CREATE TABLE
@@ -54,7 +54,7 @@ CREATE TABLE
     studio (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         name VARCHAR(255),
-        date_established DATETIME DEFAULT NOW () NOT NULL,
+        date_established DATETIME DEFAULT NOW() NOT NULL,
         country_of_origin VARCHAR(255)
     );
 
@@ -65,7 +65,7 @@ CREATE TABLE
     manga (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         title VARCHAR(255) NOT NULL,
-        date_published DATETIME DEFAULT NOW () NOT NULL
+        date_published DATETIME DEFAULT NOW() NOT NULL
     );
 
 CREATE TABLE
@@ -76,7 +76,7 @@ CREATE TABLE
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         first_name VARCHAR(255) NOT NULL,
         last_name VARCHAR(255) NOT NULL,
-        date_of_birth DATETIME DEFAULT NOW () NOT NULL,
+        date_of_birth DATETIME DEFAULT NOW() NOT NULL,
         date_of_death DATETIME,
         age DATETIME /* add code later*/
     );

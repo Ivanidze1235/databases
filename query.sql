@@ -1,4 +1,3 @@
-DROP DATABASE project_fedoroi2db;
 
 CREATE DATABASE project_fedoroi2db;
 
@@ -43,6 +42,7 @@ CREATE TABLE
 CREATE TABLE
     developer (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        country_of_origin VARCHAR(255) NOT NULL,
         name VARCHAR(255) NOT NULL,
         date_established DATETIME DEFAULT NOW() NOT NULL
     );
@@ -98,6 +98,7 @@ CREATE TABLE
     author (
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         first_name VARCHAR(255) NOT NULL,
+        country_of_origin VARCHAR(255) NOT NULL,
         last_name VARCHAR(255) NOT NULL,
         date_of_birth DATETIME DEFAULT NOW() NOT NULL,
         date_of_death DATETIME,

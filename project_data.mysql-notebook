@@ -1,584 +1,337 @@
 {
     "type": "MySQLNotebook",
     "version": "1.0",
-    "caption": "DB Notebook",
-    "content": "CREATE DATABASE project_fedoroi2db;\n\nUSE project_fedoroi2db;\n\nCREATE TABLE\n    user (\n        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,\n        username VARCHAR(255),\n        level INT NOT NULL DEFAULT 0\n    );\n\nCREATE TABLE\n    user_achievements(\n        user_id INT NOT NULL,\n        achievement VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    games_played (\n        user_id INT NOT NULL,\n        game_id INT NOT NULL,\n        playtime INT NOT NULL DEFAULT 0,\n        date_started DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    game (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        release_date DATETIME DEFAULT NOW() NOT NULL\n    );\nCREATE TABLE \n    game_genre (\n        game_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    develops (game_id INT NOT NULL, developer_id INT NOT NULL);\n\nCREATE TABLE\n    developer (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        name VARCHAR(255) NOT NULL,\n        date_established DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    anime_watched (user_id INT NOT NULL, anime_id INT NOT NULL);\n\nCREATE TABLE\n    anime (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        total_episodes INT NOT NULL,\n        total_seasons INT NOT NULL\n    );\n\nCREATE TABLE \n    anime_genre (\n        anime_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    animates (anime_id INT NOT NULL, studio_id INT NOT NULL);\n\nCREATE TABLE\n    studio (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        name VARCHAR(255),\n        date_established DATETIME DEFAULT NOW() NOT NULL,\n        country_of_origin VARCHAR(255)\n    );\n\nCREATE TABLE\n    manga_read (user_id INT NOT NULL, manga_id INT NOT NULL);\n\nCREATE TABLE\n    manga (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        date_published DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE \n    manga_genre (\n        manga_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    writes (manga_id INT NOT NULL, author_id INT NOT NULL);\n\nCREATE TABLE\n    author (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        first_name VARCHAR(255) NOT NULL,\n        last_name VARCHAR(255) NOT NULL,\n        date_of_birth DATETIME DEFAULT NOW() NOT NULL,\n        date_of_death DATETIME,\n        age DATETIME /* add code later*/\n    );\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"The Witcher\", \"2022-09-06\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Roblox\", \"2006-09-01\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Fortnite\", \"2017-07-21\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Minecraft\", \"2009-05-17\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Dead by Daylight\", \"2016-06-14\");\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"fedoroi2\", 43);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bilskim3\", 25);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"kogutb2\", 77);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"novak7\", 27);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"miller42\", 35);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"taylor19\", 18);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bennett3\", 50);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"rojas88\", 23);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"choi55\", 41);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bigchungus420\", 69);\n",
+    "caption": "query.sql",
+    "content": "DROP DATABASE project_fedoroi2db;\n\nCREATE DATABASE project_fedoroi2db;\n\nUSE project_fedoroi2db;\n\nCREATE TABLE\n    user (\n        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,\n        username VARCHAR(255),\n        level INT NOT NULL DEFAULT 0\n    );\n\nCREATE TABLE\n    user_achievements(\n        user_id INT NOT NULL,\n        achievement VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    games_played (\n        user_id INT NOT NULL,\n        game_id INT NOT NULL,\n        playtime INT NOT NULL DEFAULT 0,\n        date_started DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    game (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        release_date DATETIME DEFAULT NOW() NOT NULL\n    );\nCREATE TABLE \n    game_genre (\n        game_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    develops (game_id INT NOT NULL, developer_id INT NOT NULL);\n\nCREATE TABLE\n    developer (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        country_of_origin VARCHAR(255) NOT NULL,\n        name VARCHAR(255) NOT NULL,\n        date_established DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE\n    anime_watched (user_id INT NOT NULL, anime_id INT NOT NULL);\n\nCREATE TABLE\n    anime (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        total_episodes INT NOT NULL,\n        total_seasons INT NOT NULL\n    );\n\nCREATE TABLE \n    anime_genre (\n        anime_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    animates (anime_id INT NOT NULL, studio_id INT NOT NULL);\n\nCREATE TABLE\n    studio (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        name VARCHAR(255),\n        date_established DATETIME DEFAULT NOW() NOT NULL,\n        country_of_origin VARCHAR(255)\n    );\n\nCREATE TABLE\n    manga_read (user_id INT NOT NULL, manga_id INT NOT NULL);\n\nCREATE TABLE\n    manga (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        title VARCHAR(255) NOT NULL,\n        date_published DATETIME DEFAULT NOW() NOT NULL\n    );\n\nCREATE TABLE \n    manga_genre (\n        manga_id INT NOT NULL,\n        genre VARCHAR(255) NOT NULL\n    );\n\nCREATE TABLE\n    writes (manga_id INT NOT NULL, author_id INT NOT NULL);\n\nCREATE TABLE\n    author (\n        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,\n        first_name VARCHAR(255) NOT NULL,\n        country_of_origin VARCHAR(255) NOT NULL,\n        last_name VARCHAR(255) NOT NULL,\n        date_of_birth DATETIME DEFAULT NOW() NOT NULL,\n        date_of_death DATETIME,\n        age DATETIME /* add code later*/\n    );\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"The Witcher\", \"2022-09-06\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Roblox\", \"2006-09-01\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Fortnite\", \"2017-07-21\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Minecraft\", \"2009-05-17\");\n\nINSERT INTO\n    game (title, release_date)\nVALUES\n    (\"Dead by Daylight\", \"2016-06-14\");\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"fedoroi2\", 43);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bilskim3\", 25);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"kogutb2\", 77);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"novak7\", 27);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"miller42\", 35);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"taylor19\", 18);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bennett3\", 50);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"rojas88\", 23);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"choi55\", 41);\n\nINSERT INTO\n    user (username, level)\nVALUES\n    (\"bigchungus420\", 69);",
     "options": {
         "tabSize": 4,
-        "insertSpaces": true,
         "indentSize": 4,
-        "defaultEOL": "CRLF",
+        "insertSpaces": true,
+        "defaultEOL": "LF",
         "trimAutoWhitespace": true
     },
-    "viewState": {
-        "cursorState": [
-            {
-                "inSelectionMode": false,
-                "selectionStart": {
-                    "lineNumber": 177,
-                    "column": 7
-                },
-                "position": {
-                    "lineNumber": 177,
-                    "column": 7
-                }
-            }
-        ],
-        "viewState": {
-            "scrollLeft": 0,
-            "firstPosition": {
-                "lineNumber": 159,
-                "column": 1
-            },
-            "firstPositionDeltaTop": -3
-        },
-        "contributionsState": {
-            "editor.contrib.folding": {},
-            "editor.contrib.wordHighlighter": false
-        }
-    },
+    "viewState": null,
     "contexts": [
         {
             "state": {
                 "start": 1,
-                "end": 178,
+                "end": 182,
                 "language": "mysql",
-                "result": {
-                    "type": "text",
-                    "text": [
-                        {
-                            "type": 2,
-                            "index": 0,
-                            "resultId": "a6a61c72-7bf2-4aa3-a190-ef19ad75c5a8",
-                            "content": "OK, 1 row affected in 3.966ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 1,
-                            "resultId": "5c2ca898-a94d-4a73-dd82-b5bd250e78f5",
-                            "content": "OK, 0 records retrieved in 0.898ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 2,
-                            "resultId": "618e7129-7af8-4e4e-d84e-7a5fd1e2f2d9",
-                            "content": "OK, 0 records retrieved in 13.986ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 3,
-                            "resultId": "1391fda9-9434-4f34-def1-2623b7d6dc6a",
-                            "content": "OK, 0 records retrieved in 11.224ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 4,
-                            "resultId": "40ee3f81-ecad-41cf-8df9-da0cee6663ea",
-                            "content": "OK, 0 records retrieved in 11.243ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 5,
-                            "resultId": "21afb43a-518b-4574-e0ea-3abed78de354",
-                            "content": "OK, 0 records retrieved in 9.259ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 6,
-                            "resultId": "310edc61-8378-411e-b72f-4f309a8b600b",
-                            "content": "OK, 0 records retrieved in 11.035ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 7,
-                            "resultId": "92fc1765-a56a-4363-91b7-ec2af8b3ab9f",
-                            "content": "OK, 0 records retrieved in 9.442ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 8,
-                            "resultId": "69bdf4db-d0a9-4924-ab5f-36c1354fdd13",
-                            "content": "OK, 0 records retrieved in 14.477ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 9,
-                            "resultId": "03303c59-1e9c-4fa2-f885-b9a18ed11f26",
-                            "content": "OK, 0 records retrieved in 9.572ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 10,
-                            "resultId": "bcc18f99-9419-4479-b0c3-57bc698cf2ed",
-                            "content": "OK, 0 records retrieved in 9.811ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 11,
-                            "resultId": "71490fe8-f53f-47c2-ee23-bb674e440aa5",
-                            "content": "OK, 0 records retrieved in 9.799ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 12,
-                            "resultId": "6f2d533b-5c01-40ed-8041-08530897ae82",
-                            "content": "OK, 0 records retrieved in 10.082ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 13,
-                            "resultId": "18bbec63-6868-4163-80b6-4ab046141692",
-                            "content": "OK, 0 records retrieved in 9.671ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 14,
-                            "resultId": "cc2ce8c4-a749-4798-8032-d710773977c7",
-                            "content": "OK, 0 records retrieved in 8.756ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 15,
-                            "resultId": "89eb06bd-83c9-4363-d06e-fd0d08616a06",
-                            "content": "OK, 0 records retrieved in 10.333ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 16,
-                            "resultId": "3107e096-f31a-4860-d6e0-86a9c198379e",
-                            "content": "OK, 0 records retrieved in 9.62ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 17,
-                            "resultId": "71c0410f-d09a-4f2f-ee82-acee96fe5ec1",
-                            "content": "OK, 0 records retrieved in 10.085ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 18,
-                            "resultId": "4c921703-c7c3-4dbf-9023-64825e2da6b0",
-                            "content": "OK, 0 records retrieved in 10.088ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 19,
-                            "resultId": "ba13f437-8465-485e-da8b-2f02696ab149",
-                            "content": "OK, 1 row affected in 2.969ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 20,
-                            "resultId": "fd2fe177-d497-4714-a5cf-09e251c7cfdb",
-                            "content": "OK, 1 row affected in 1.969ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 21,
-                            "resultId": "f30b0693-87ef-4676-988b-1cc1291e26a8",
-                            "content": "OK, 1 row affected in 2.023ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 22,
-                            "resultId": "8a7767f6-ea1c-41fb-e994-ae095ae663c2",
-                            "content": "OK, 1 row affected in 1.931ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 23,
-                            "resultId": "66ff8688-ec9d-4640-e0ad-fdf8ca630f1f",
-                            "content": "OK, 1 row affected in 2.317ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 24,
-                            "resultId": "cd7460fb-4f34-49c1-df8e-7d2808827745",
-                            "content": "OK, 1 row affected in 2.355ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 25,
-                            "resultId": "b88ebaea-74f4-43c0-b5b9-b965ea52d29e",
-                            "content": "OK, 1 row affected in 2.001ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 26,
-                            "resultId": "8498c8cc-ae27-4313-c151-251aa9f5efde",
-                            "content": "OK, 1 row affected in 1.664ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 27,
-                            "resultId": "011c4fcc-c4e6-46ee-9143-86fa05469dd7",
-                            "content": "OK, 1 row affected in 1.848ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 28,
-                            "resultId": "4271b1b8-2bee-4f8d-f8b5-4f54d703f25b",
-                            "content": "OK, 1 row affected in 1.747ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 29,
-                            "resultId": "6827e07d-203a-4a70-f286-c5644613abd9",
-                            "content": "OK, 1 row affected in 2.255ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 30,
-                            "resultId": "5bbe176d-6d32-426c-a2b5-ab385c9f18a8",
-                            "content": "OK, 1 row affected in 1.969ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 31,
-                            "resultId": "fc8b8a59-8b20-4c6d-88f0-d1c727e23e58",
-                            "content": "OK, 1 row affected in 1.793ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 32,
-                            "resultId": "74c4b43d-57cd-4e16-edc6-8df57ec9e213",
-                            "content": "OK, 1 row affected in 2.221ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 33,
-                            "resultId": "a476fd4a-cd94-4fee-c81e-314dbfce9303",
-                            "content": "OK, 1 row affected in 1.738ms"
-                        }
-                    ]
-                },
-                "currentHeight": 352,
                 "currentSet": 1,
                 "statements": [
                     {
                         "delimiter": ";",
                         "span": {
                             "start": 0,
-                            "length": 35
+                            "length": 33
                         },
-                        "contentStart": 0,
+                        "contentStart": 1,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 35,
+                            "start": 33,
+                            "length": 37
+                        },
+                        "contentStart": 35,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 70,
                             "length": 25
                         },
-                        "contentStart": 37,
+                        "contentStart": 72,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 60,
+                            "start": 95,
                             "length": 152
                         },
-                        "contentStart": 62,
+                        "contentStart": 97,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 212,
+                            "start": 247,
                             "length": 116
                         },
-                        "contentStart": 214,
+                        "contentStart": 249,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 328,
+                            "start": 363,
                             "length": 194
                         },
-                        "contentStart": 330,
+                        "contentStart": 365,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 522,
+                            "start": 557,
                             "length": 174
                         },
-                        "contentStart": 524,
+                        "contentStart": 559,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 696,
+                            "start": 731,
                             "length": 104
                         },
-                        "contentStart": 697,
+                        "contentStart": 732,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 800,
+                            "start": 835,
                             "length": 78
                         },
-                        "contentStart": 802,
+                        "contentStart": 837,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 878,
-                            "length": 182
+                            "start": 913,
+                            "length": 231
                         },
-                        "contentStart": 880,
+                        "contentStart": 915,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1060,
+                            "start": 1144,
                             "length": 79
                         },
-                        "contentStart": 1062,
+                        "contentStart": 1146,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1139,
+                            "start": 1223,
                             "length": 194
                         },
-                        "contentStart": 1141,
+                        "contentStart": 1225,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1333,
+                            "start": 1417,
                             "length": 107
                         },
-                        "contentStart": 1335,
+                        "contentStart": 1419,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1440,
+                            "start": 1524,
                             "length": 76
                         },
-                        "contentStart": 1442,
+                        "contentStart": 1526,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1516,
+                            "start": 1600,
                             "length": 210
                         },
-                        "contentStart": 1518,
+                        "contentStart": 1602,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1726,
+                            "start": 1810,
                             "length": 76
                         },
-                        "contentStart": 1728,
+                        "contentStart": 1812,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1802,
+                            "start": 1886,
                             "length": 177
                         },
-                        "contentStart": 1804,
+                        "contentStart": 1888,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 1979,
+                            "start": 2063,
                             "length": 107
                         },
-                        "contentStart": 1981,
+                        "contentStart": 2065,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2086,
+                            "start": 2170,
                             "length": 74
                         },
-                        "contentStart": 2088,
+                        "contentStart": 2172,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2160,
-                            "length": 297
+                            "start": 2244,
+                            "length": 346
                         },
-                        "contentStart": 2162,
+                        "contentStart": 2246,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2457,
+                            "start": 2590,
                             "length": 86
                         },
-                        "contentStart": 2459,
+                        "contentStart": 2592,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2543,
+                            "start": 2676,
                             "length": 81
                         },
-                        "contentStart": 2545,
+                        "contentStart": 2678,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2624,
+                            "start": 2757,
                             "length": 83
                         },
-                        "contentStart": 2626,
+                        "contentStart": 2759,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2707,
+                            "start": 2840,
                             "length": 84
                         },
-                        "contentStart": 2709,
+                        "contentStart": 2842,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2791,
+                            "start": 2924,
                             "length": 91
                         },
-                        "contentStart": 2793,
+                        "contentStart": 2926,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2882,
+                            "start": 3015,
                             "length": 69
                         },
-                        "contentStart": 2884,
+                        "contentStart": 3017,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 2951,
+                            "start": 3084,
                             "length": 69
                         },
-                        "contentStart": 2953,
+                        "contentStart": 3086,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3020,
+                            "start": 3153,
                             "length": 68
                         },
-                        "contentStart": 3022,
+                        "contentStart": 3155,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3088,
+                            "start": 3221,
                             "length": 67
                         },
-                        "contentStart": 3090,
+                        "contentStart": 3223,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3155,
+                            "start": 3288,
                             "length": 69
                         },
-                        "contentStart": 3157,
+                        "contentStart": 3290,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3224,
+                            "start": 3357,
                             "length": 69
                         },
-                        "contentStart": 3226,
+                        "contentStart": 3359,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3293,
+                            "start": 3426,
                             "length": 69
                         },
-                        "contentStart": 3295,
+                        "contentStart": 3428,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3362,
+                            "start": 3495,
                             "length": 68
                         },
-                        "contentStart": 3364,
+                        "contentStart": 3497,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3430,
+                            "start": 3563,
                             "length": 67
                         },
-                        "contentStart": 3432,
+                        "contentStart": 3565,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 3497,
+                            "start": 3630,
                             "length": 74
                         },
-                        "contentStart": 3499,
-                        "state": 0
-                    }
-                ]
-            },
-            "data": []
-        },
-        {
-            "state": {
-                "start": 179,
-                "end": 179,
-                "language": "mysql",
-                "currentSet": 1,
-                "statements": [
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 0,
-                            "length": 0
-                        },
-                        "contentStart": 0,
+                        "contentStart": 3632,
                         "state": 0
                     }
                 ]

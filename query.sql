@@ -104,78 +104,54 @@ CREATE TABLE
         date_of_death DATETIME,
         age DATETIME /* add code later*/
     );
+    
+-- insert games:
 
 INSERT INTO
     game (title, release_date)
 VALUES
-    ("The Witcher", "2022-09-06");
-
-INSERT INTO
-    game (title, release_date)
-VALUES
-    ("Roblox", "2006-09-01");
-
-INSERT INTO
-    game (title, release_date)
-VALUES
-    ("Fortnite", "2017-07-21");
-
-INSERT INTO
-    game (title, release_date)
-VALUES
-    ("Minecraft", "2009-05-17");
-
-INSERT INTO
-    game (title, release_date)
-VALUES
+    ("The Witcher", "2022-09-06"),
+    ("Roblox", "2006-09-01"),
+    ("Fortnite", "2017-07-21"),
+    ("Minecraft", "2009-05-17"),
     ("Dead by Daylight", "2016-06-14");
 
-INSERT INTO
-    user (username, level)
-VALUES
-    ("fedoroi2", 43);
+-- insert users:
 
 INSERT INTO
     user (username, level)
 VALUES
-    ("bilskim3", 25);
-
-INSERT INTO
-    user (username, level)
-VALUES
-    ("kogutb2", 77);
-
-INSERT INTO
-    user (username, level)
-VALUES
-    ("novak7", 27);
-
-INSERT INTO
-    user (username, level)
-VALUES
-    ("miller42", 35);
-
-INSERT INTO
-    user (username, level)
-VALUES
-    ("taylor19", 18);
-
-INSERT INTO
-    user (username, level)
-VALUES
-    ("bennett3", 50);
-
-INSERT INTO
-    user (username, level)
-VALUES
-    ("rojas88", 23);
-
-INSERT INTO
-    user (username, level)
-VALUES
+    ("fedoroi2", 43),
+    ("bilskim3", 25),
+    ("kogutb2", 77),
+    ("novak7", 27),
+    ("miller42", 35),
+    ("taylor19", 18),
+    ("bennett3", 50),
+    ("rojas88", 23),
     ("choi55", 41);
+    
+-- insert anime:
+    
+INSERT INTO
+    anime (title, total_episodes, total_seasons)
+VALUES
+    ("My deer friend Nokotan", 12, 1),
+    ("JoJo's Bizarre Adventure", 190, 5),
+    ("Attack on titan", 87, 4),
+    ("Naruto", 356, 10),
+    ("DanDaDan", 24, 2);
+    
+-- insert manga:
 
 INSERT INTO
-    user (username, level)
+    manga (title, date_published)
 VALUES
-    ("bigchungus420", 69);
+    ("Berserk", '1990-9-30'),
+    ("Berserk two", '1990-10-30'),
+    ("Invincible", '2013-05-13'),
+    ("One Punch Man", '1980-06-16'),
+    ("Two Punch Man", '1990-07-25');
+
+SELECT * FROM anime;
+SELECT * FROM manga;

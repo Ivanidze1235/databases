@@ -99,10 +99,9 @@ CREATE TABLE
         id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         first_name VARCHAR(255) NOT NULL,
         country_of_origin VARCHAR(255) NOT NULL,
-        last_name VARCHAR(255) NOT NULL,
-        date_of_birth DATETIME DEFAULT NOW() NOT NULL,
-        date_of_death DATETIME,
-        age DATETIME /* add code later*/
+        last_name VARCHAR(255),
+        date_of_birth DATETIME DEFAULT NOW(),
+        date_of_death DATETIME DEFAULT NULL
     );
     
 -- insert games:
@@ -201,6 +200,23 @@ VALUES
     (3, 1),
     (3, 4),
     (5, 5);
+
+INSERT INTO
+	author (first_name, last_name, country_of_origin, date_of_birth, date_of_death)
+VALUES
+	("Kentaro", "Miura", "Japan", '1966-07-11', '2021-05-06'),
+    ("Robert", "Kirkman", "United States", '1978-10-30', NULL),
+    ("ONE", NULL, "Japan", NULL, NULL),
+    ("Ivan", "Fedorov", "Ukraine", '2005-09-30', NULL),
+    ("John", "Darksoul", "Japan", '2011-01-01', NULL);
+    
+INSERT INTO
+	writes (manga_id, author_id)
+VALUES
+	(1, 1),
+    (3, 2),
+    (2, 1);
     
 SELECT * FROM game INNER JOIN develops ON game.id = game_id WHERE developer_id = 1;
 SELECT * FROM studio INNER JOIN animates ON studio.id = studio_id WHERE anime_id = 3;
+SELECT * FROM author;

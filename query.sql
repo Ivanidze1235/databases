@@ -164,8 +164,6 @@ VALUES
     ("Roblox Corporation", "United States", '2004-01-01'),
     ("Behaviour Interactive", "Canada", '1992-09-21');
 
-SELECT * FROM developer;
-
 -- insert game developer relations
 
 INSERT INTO
@@ -201,6 +199,8 @@ VALUES
     (3, 4),
     (5, 5);
 
+-- insert authors
+
 INSERT INTO
 	author (first_name, last_name, country_of_origin, date_of_birth, date_of_death)
 VALUES
@@ -210,13 +210,122 @@ VALUES
     ("Ivan", "Fedorov", "Ukraine", '2005-09-30', NULL),
     ("John", "Darksoul", "Japan", '2011-01-01', NULL);
     
+-- insert author-manga relationships
+
 INSERT INTO
 	writes (manga_id, author_id)
 VALUES
 	(1, 1),
     (3, 2),
-    (2, 1);
+    (2, 1),
+    (4, 3),
+    (5, 3);
+
+-- insert user-game relations
+
+INSERT INTO
+	games_played (user_id, game_id, playtime, date_started)
+VALUES
+	(1, 4, 10000, '2010-07-20'),
+    (1, 3, 1, '2018-06-10'),
+    (2, 5, 45, '2022-01-20'),
+    (2, 1, 130, '2023-10-30'),
+    (3, 2, 5000, '2020-03-28'),
+    (3, 3, 300, '2019-04-10');
+
+-- insert user-anime relations
+
+INSERT INTO
+	anime_watched (user_id, anime_id)
+VALUES
+	(1, 3),
+    (1, 5),
+    (2, 5),
+    (2, 3),
+    (3, 4),
+    (3, 1),
+    (5, 2),
+    (6, 5);
     
-SELECT * FROM game INNER JOIN develops ON game.id = game_id WHERE developer_id = 1;
-SELECT * FROM studio INNER JOIN animates ON studio.id = studio_id WHERE anime_id = 3;
-SELECT * FROM author;
+-- insert user-manga relations
+
+INSERT INTO
+	manga_read (user_id, manga_id)
+VALUES
+	(1, 4),
+    (2, 3),
+    (2, 1),
+    (3, 3),
+    (4, 5),
+    (7, 2),
+    (5, 4),
+    (6, 1);
+
+-- insert anime genres
+
+INSERT INTO
+	anime_genre (anime_id, genre)
+VALUES
+	(1, "Comedy"),
+    (2, "Adventure"),
+    (2, "Fantasy"),
+    (3, "Action"),
+    (3, "Adventure"),
+    (4, "Adventure"),
+    (5, "Action"),
+    (5, "Comedy");
+
+-- insert game genres
+
+INSERT INTO
+	game_genre (game_id, genre)
+VALUES
+	(1, "Action"),
+    (1, "Adventure"),
+    (1, "RPG"),
+    (1, "Open World"),
+    (2, "Sandbox"),
+    (2, "Creativity"),
+    (3, "3rd person shooter"),
+    (3, "Battle Royale"),
+    (4, "Open World"),
+    (4, "Exploration"),
+    (4, "Sandbox"),
+    (4, "Open World"),
+    (4, "Survival"),
+    (5, "Survival"),
+    (5, "Multiplayer"),
+    (6, "First Person Shooter"),
+    (6, "RPG"),
+    (6, "Open World");
+
+-- insert manga genres
+
+INSERT INTO
+	manga_genre (manga_id, genre)
+VALUES
+	(1, "Fantasy"),
+    (1, "Dark Fantasy"),
+    (2, "Comedy"),
+    (3, "Action"),
+    (4, "Action"),
+    (5, "Horror");
+
+INSERT INTO
+	user_achievements (user_id, achievement)
+VALUES
+	(1, "Gamer"),
+    (2, "Nerd"),
+    (3, "Wholesome 100"),
+    (5, "Schadenfreude"),
+    (7, "Gamer"),
+    (9, "Wholesome 100");
+
+
+-- SELECT * FROM author INNER JOIN writes ON author.id = author_id JOIN manga ON manga.id = manga_id;
+-- SELECT username, level, playtime, title FROM user INNER JOIN games_played ON user_id = user.id JOIN game ON game_id = game.id;
+-- SELECT username, title FROM user INNER JOIN anime_watched ON user_id = user.id JOIN anime ON anime_id = anime.id;
+SELECT username, title FROM user INNER JOIN manga_read ON user_id = user.id JOIN manga ON manga_id = manga.id;
+SELECT * FROM manga INNER JOIN manga_genre ON manga.id = manga_id;
+
+SELECT * FROM user INNER JOIN user_achievements ON user.id = user_id;

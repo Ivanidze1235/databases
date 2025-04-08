@@ -114,7 +114,8 @@ VALUES
     ("Roblox", "2006-09-01"),
     ("Fortnite", "2017-07-21"),
     ("Minecraft", "2009-05-17"),
-    ("Dead by Daylight", "2016-06-14");
+    ("Dead by Daylight", "2016-06-14"),
+    ("Cyberpunk 2077", "2020-12-10");
 
 -- insert users:
 
@@ -147,11 +148,35 @@ VALUES
 INSERT INTO
     manga (title, date_published)
 VALUES
-    ("Berserk", '1990-9-30'),
+    ("Berserk", '1990-09-30'),
     ("Berserk two", '1990-10-30'),
     ("Invincible", '2013-05-13'),
     ("One Punch Man", '1980-06-16'),
     ("Two Punch Man", '1990-07-25');
+    
+-- insert developers
 
-SELECT * FROM anime;
-SELECT * FROM manga;
+INSERT INTO
+    developer (name, country_of_origin, date_established)
+VALUES
+    ("CD Projekt Red", "Poland", '2002-05-01'),
+	("Mojang", "Sweden", '2009-06-01'),
+    ("Epic Games", "United States", '1991-01-01'),
+    ("Roblox Corporation", "United States", '2004-01-01'),
+    ("Behaviour Interactive", "Canada", '1992-09-21');
+
+SELECT * FROM developer;
+
+-- insert game developer relations
+
+INSERT INTO
+    develops (game_id, developer_id)
+VALUES
+	(1, 1),
+    (6, 1),
+    (2, 4),
+    (3, 3),
+    (4, 2),
+    (5, 5);
+    
+SELECT * FROM game INNER JOIN develops ON game.id = game_id WHERE developer_id = 1;

@@ -179,4 +179,28 @@ VALUES
     (4, 2),
     (5, 5);
     
+-- insert studios
+
+INSERT INTO
+    studio (name, date_established, country_of_origin)
+VALUES
+    ("Wit Studio", '2012-06-01', "Japan"),
+	("David Production", '2007-09-01', "Japan"),
+    ("Pierrot", '1979-05-01', "Japan"),
+    ("MAPPA", '2011-06-14', "Japan"),
+    ("Science Saru", '2013-02-04', "Japan");
+
+-- insert anime-studio relations
+
+INSERT INTO
+    animates (anime_id, studio_id)
+VALUES
+    (1, 1),
+	(2, 2),
+    (4, 3),
+    (3, 1),
+    (3, 4),
+    (5, 5);
+    
 SELECT * FROM game INNER JOIN develops ON game.id = game_id WHERE developer_id = 1;
+SELECT * FROM studio INNER JOIN animates ON studio.id = studio_id WHERE anime_id = 3;

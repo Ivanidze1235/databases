@@ -115,6 +115,52 @@ VALUES
     ("Minecraft", "2009-05-17"),
     ("Dead by Daylight", "2016-06-14"),
     ("Cyberpunk 2077", "2020-12-10");
+    
+    -- insert game developer relations
+
+INSERT INTO
+    develops (game_id, developer_id)
+VALUES
+	(1, 1),
+    (6, 1),
+    (2, 4),
+    (3, 3),
+    (4, 2),
+    (5, 5);
+    -- insert developers
+
+INSERT INTO
+    developer (name, country_of_origin, date_established)
+VALUES
+    ("CD Projekt Red", "Poland", '2002-05-01'),
+	("Mojang", "Sweden", '2009-06-01'),
+    ("Epic Games", "United States", '1991-01-01'),
+    ("Roblox Corporation", "United States", '2004-01-01'),
+    ("Behaviour Interactive", "Canada", '1992-09-21');
+    
+-- insert game genres
+
+INSERT INTO
+	game_genre (game_id, genre)
+VALUES
+	(1, "Action"),
+    (1, "Adventure"),
+    (1, "RPG"),
+    (1, "Open World"),
+    (2, "Sandbox"),
+    (2, "Creativity"),
+    (3, "3rd person shooter"),
+    (3, "Battle Royale"),
+    (4, "Open World"),
+    (4, "Exploration"),
+    (4, "Sandbox"),
+    (4, "Open World"),
+    (4, "Survival"),
+    (5, "Survival"),
+    (5, "Multiplayer"),
+    (6, "First Person Shooter"),
+    (6, "RPG"),
+    (6, "Open World");
 
 -- insert users:
 
@@ -142,41 +188,7 @@ VALUES
     ("Naruto", 356, 10),
     ("DanDaDan", 24, 2);
     
--- insert manga:
-
-INSERT INTO
-    manga (title, date_published)
-VALUES
-    ("Berserk", '1990-09-30'),
-    ("Berserk two", '1990-10-30'),
-    ("Invincible", '2013-05-13'),
-    ("One Punch Man", '1980-06-16'),
-    ("Two Punch Man", '1990-07-25');
-    
--- insert developers
-
-INSERT INTO
-    developer (name, country_of_origin, date_established)
-VALUES
-    ("CD Projekt Red", "Poland", '2002-05-01'),
-	("Mojang", "Sweden", '2009-06-01'),
-    ("Epic Games", "United States", '1991-01-01'),
-    ("Roblox Corporation", "United States", '2004-01-01'),
-    ("Behaviour Interactive", "Canada", '1992-09-21');
-
--- insert game developer relations
-
-INSERT INTO
-    develops (game_id, developer_id)
-VALUES
-	(1, 1),
-    (6, 1),
-    (2, 4),
-    (3, 3),
-    (4, 2),
-    (5, 5);
-    
--- insert studios
+    -- insert studios
 
 INSERT INTO
     studio (name, date_established, country_of_origin)
@@ -186,7 +198,7 @@ VALUES
     ("Pierrot", '1979-05-01', "Japan"),
     ("MAPPA", '2011-06-14', "Japan"),
     ("Science Saru", '2013-02-04', "Japan");
-
+    
 -- insert anime-studio relations
 
 INSERT INTO
@@ -198,6 +210,33 @@ VALUES
     (3, 1),
     (3, 4),
     (5, 5);
+
+-- insert anime genres
+
+INSERT INTO
+	anime_genre (anime_id, genre)
+VALUES
+	(1, "Comedy"),
+    (2, "Adventure"),
+    (2, "Fantasy"),
+    (3, "Action"),
+    (3, "Adventure"),
+    (4, "Adventure"),
+    (5, "Action"),
+    (5, "Comedy");
+    
+-- insert manga:
+
+INSERT INTO
+    manga (title, date_published)
+VALUES
+    ("Berserk", '1990-09-30'),
+    ("Berserk two", '1990-10-30'),
+    ("Invincible", '2013-05-13'),
+    ("One Punch Man", '1980-06-16'),
+    ("Two Punch Man", '1990-07-25');
+    
+
 
 -- insert authors
 
@@ -261,43 +300,6 @@ VALUES
     (5, 4),
     (6, 1);
 
--- insert anime genres
-
-INSERT INTO
-	anime_genre (anime_id, genre)
-VALUES
-	(1, "Comedy"),
-    (2, "Adventure"),
-    (2, "Fantasy"),
-    (3, "Action"),
-    (3, "Adventure"),
-    (4, "Adventure"),
-    (5, "Action"),
-    (5, "Comedy");
-
--- insert game genres
-
-INSERT INTO
-	game_genre (game_id, genre)
-VALUES
-	(1, "Action"),
-    (1, "Adventure"),
-    (1, "RPG"),
-    (1, "Open World"),
-    (2, "Sandbox"),
-    (2, "Creativity"),
-    (3, "3rd person shooter"),
-    (3, "Battle Royale"),
-    (4, "Open World"),
-    (4, "Exploration"),
-    (4, "Sandbox"),
-    (4, "Open World"),
-    (4, "Survival"),
-    (5, "Survival"),
-    (5, "Multiplayer"),
-    (6, "First Person Shooter"),
-    (6, "RPG"),
-    (6, "Open World");
 
 -- insert manga genres
 
